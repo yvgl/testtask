@@ -38,7 +38,7 @@ public class Stack<T> {
         return value;
    }
 
-   public T peek() {
+   public synchronized T peek() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
@@ -46,7 +46,7 @@ public class Stack<T> {
         return last.value;
    }
 
-   public void grow(int capacity) {
+   public synchronized void grow(int capacity) {
         checkBiggerThanZero(capacity);
         this.capacity += capacity;
    }
