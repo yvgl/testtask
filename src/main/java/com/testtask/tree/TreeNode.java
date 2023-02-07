@@ -18,25 +18,25 @@ public abstract class TreeNode<T> {
             return value;
         }
 
-        Collection<T> allNodes = new ArrayList<>();
-        visit(this, allNodes);
+        Collection<T> values = new ArrayList<>();
+        visit(this, values);
 
-        return allNodes.stream().reduce(this::add).orElse(null);
+        return values.stream().reduce(this::add).orElse(null);
     }
 
-    private void visit(TreeNode<T> node, Collection<T> allNodes) {
+    private void visit(TreeNode<T> node, Collection<T> values) {
         if (null == node) {
             return;
         }
 
-        allNodes.add(node.value);
+        values.add(node.value);
 
         if (null == node.children) {
             return;
         }
 
         for (TreeNode<T> child : node.children) {
-            visit(child, allNodes);
+            visit(child, values);
         }
     }
 
