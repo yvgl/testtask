@@ -24,4 +24,10 @@ class IntegerTreeNodeTest {
         Assertions.assertEquals(123456, head.sum());
     }
 
+    @Test
+    void valueReturned_whenThereIsNoChildNodes() {
+        TreeNode<Integer> head = new IntegerTreeNode(25, null);
+        Assertions.assertEquals(25, head.sum());
+    }
+
 }
