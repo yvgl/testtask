@@ -24,32 +24,32 @@ public class Stack<T> {
 
         last = new Node<>(value, last);
         size++;
-   }
+    }
 
-   public synchronized T pop() {
-        if (isEmpty()) {
-            throw new EmptyStackException();
-        }
-
+    public synchronized T pop() {
+        checkNotEmpty();
         T value = last.value;
         last = last.prev;
         size--;
 
         return value;
-   }
+    }
 
-   public synchronized T peek() {
+    private void checkNotEmpty() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
+    }
 
+    public synchronized T peek() {
+        checkNotEmpty();
         return last.value;
-   }
+    }
 
-   public synchronized void grow(int capacity) {
+    public synchronized void grow(int capacity) {
         checkBiggerThanZero(capacity);
         this.capacity += capacity;
-   }
+    }
 
     public boolean isEmpty() {
         return size == 0;
